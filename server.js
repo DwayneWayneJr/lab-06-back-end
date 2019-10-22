@@ -13,10 +13,10 @@ const PORT = process.env.PORT || 3003;
 
 
 app.get('/location', (request, response) => {
-  response.send('proof of life');
   const city = request.query.data;
 
   const locationData = searchLatToLong(city);
+  console.log(locationData);
 
   response.send(locationData);
 });
@@ -28,6 +28,9 @@ app.get('*', (request, response) => {
 
 function searchLatToLong(location) {
   const geoData = require('./data/geo.json');
+
+  let myCity = new City(location, geoData);
+  return myCity;
 }
 
 function City(city, geoData) {
