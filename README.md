@@ -6,6 +6,6 @@
 
 # Start time: 0930 am
 
-# Finish time: **\_**
+# Finish time: 
 
-# Actual time needed to complete: **\_**
+# Actual time needed to complete: 
