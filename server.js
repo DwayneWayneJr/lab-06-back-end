@@ -13,10 +13,10 @@ const PORT = process.env.PORT || 3003;
 
 
 app.get('/location', (request, response) => {
-  response.send('proof of life');
   const city = request.query.data;
 
   const locationData = searchLatToLong(city);
+  console.log(locationData);
 
   response.send(locationData);
 });
@@ -28,11 +28,10 @@ app.get('*', (request, response) => {
 
 function searchLatToLong(location) {
   const geoData = require('./data/geo.json');
+
+  let myCity = new City(location, geoData);
+  return myCity;
 }
-
-
-app.listen(PORT, () => console.log('app is listening on ${PORT}'));
-
 
 function City(city, geoData) {
   this.search_query = city;
@@ -40,4 +39,10 @@ function City(city, geoData) {
   this.latitude = geoData.results[0].geometry.location.lat;
   this.longitude = geoData.results[0].geometry.location.lng;
 }
+
+
+
+app.listen(PORT, () => console.log('app is listening on ${PORT}'));
+
+
 
