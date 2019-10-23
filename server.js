@@ -40,6 +40,11 @@ function City(city, geoData) {
   this.longitude = geoData.results[0].geometry.location.lng;
 }
 
+app.get('/weather', (request, response) => {
+  const darkskyData = require('./data.darksky.json')
+  const weatherArray = [];
+});
+
 
 
 app.listen(PORT, () => console.log('app is listening on ${PORT}'));
